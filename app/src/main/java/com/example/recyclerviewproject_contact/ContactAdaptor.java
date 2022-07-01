@@ -1,6 +1,7 @@
 package com.example.recyclerviewproject_contact;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +14,10 @@ import java.util.ArrayList;
 
 public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactViewHolder> {
 
-    private ArrayList<Contact> contacts;
+    //list of contacts
 
-    public ContactAdaptor(Context context , ArrayList<Contact> list)
-    {
-        contacts=list;
-        activity= (ItemClicked) context;
-    }
+    private ArrayList<Contact> contacts;
+    private static final String TAG = "ContactAdaptor";
 
     public ArrayList<Contact> getContacts() {
         return contacts;
@@ -29,15 +27,25 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
         this.contacts = contacts;
     }
 
+    // ////////////////////////////////
+
+    ItemClicked activity;
+
+    public ContactAdaptor(Context context , ArrayList<Contact> list)
+    {
+        contacts=list;
+        activity= (ItemClicked) context;
+    }
+
     interface ItemClicked{
         void onItemClicked(int index);
     }
-    ItemClicked activity;
 
     @NonNull
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+        Log.i(TAG, "onCreateViewHolder: ");
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact , parent,false);
 
         return new ContactViewHolder(v);
@@ -46,6 +54,7 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
 
+        Log.i(TAG, "onBindViewHolder: position => "+position);
         holder.itemView.setTag(contacts.get(position));
         holder.bindItems(position);
 
@@ -63,15 +72,9 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
         public ContactViewHolder(@NonNull View itemView ) {
             super(itemView);
 
-            tvContactFirst=itemView.findViewById(R.id.tvContactFirst);
-            tvContactFull=itemView.findViewById(R.id.tvContactFull);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    activity.onItemClicked(contacts.indexOf((Contact) itemView.getTag()));
-                }
-            });
+            //view to java code
+            tvContactFirst=itemView.findViewById(R.id.tvSheetFirst);
+            tvContactFull=itemView.findViewById(R.id.tvSheettFull);
 
         }
 
@@ -79,6 +82,13 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
         {
             tvContactFull.setText(getContacts().get(i).getFullName());
             tvContactFirst.setText(getContacts().get(i).getFullName().substring(0,1));
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    activity.onItemClicked(contacts.indexOf((Contact) itemView.getTag()));
+                }
+            });
         }
 
     }

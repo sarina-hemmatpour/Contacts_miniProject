@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:foreground="?attr/selectableItemBackground"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tvContactFirst"
+        android:id="@+id/tvSheetFirst"
         android:layout_width="64dp"
         android:layout_height="56dp"
         android:layout_marginStart="12dp"
@@ -23,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvContactFull"
+        android:id="@+id/tvSheettFull"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -31,6 +32,6 @@
         android:text="Contact Fullname"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvContactFirst"
+        app:layout_constraintStart_toEndOf="@+id/tvSheetFirst"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
