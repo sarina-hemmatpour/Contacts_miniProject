@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity  implements ContactAdaptor.I
         editMode=true;
     }
 
+    @Override
+    public void onItemLongClicked(int index) {
+        adapter.removeContact(index);
+    }
+
     public void findViews()
     {
         recyclerView=findViewById(R.id.rvList);

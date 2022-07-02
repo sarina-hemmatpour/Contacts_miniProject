@@ -39,6 +39,7 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
 
     interface ItemClicked{
         void onItemClicked(int index);
+        void onItemLongClicked(int index);
     }
 
     @NonNull
@@ -90,6 +91,16 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
                     activity.onItemClicked(contacts.indexOf((Contact) itemView.getTag()));
                 }
             });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    activity.onItemLongClicked(getAdapterPosition());
+
+                    //agar bekhaym jaye dige i ham long listener set konim bayad bezarim false bargardune
+                    return false;
+                }
+            });
         }
 
     }
@@ -104,6 +115,11 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
         contacts.get(index).setFullName(fullName);
         notifyItemChanged(index);
         //************************* number
+    }
+    public void removeContact(int index)
+    {
+        contacts.remove(index);
+        notifyItemRemoved(index);
     }
 
 }
