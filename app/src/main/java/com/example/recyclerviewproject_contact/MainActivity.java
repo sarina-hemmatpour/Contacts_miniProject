@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity  implements ContactAdaptor.I
     ImageView imgAdd;
     EditText etPersonName;
 
+    private boolean editMode=false;
+    private int editingItemIndex=-1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +56,14 @@ public class MainActivity extends AppCompatActivity  implements ContactAdaptor.I
     @Override
     public void onItemClicked(int index) {
 
-        Toast.makeText(this, ApplicationClass.contacts.get(index).getFullName(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ApplicationClass.contacts.get(index).getFullName(),
+//                Toast.LENGTH_SHORT).show();
 
+        imgAdd.setImageResource(R.drawable.ic_baseline_done_24);
+        etPersonName.setText(ApplicationClass.contacts.get(index).getFullName());
+
+        editingItemIndex=index;
+        editMode=true;
     }
 
     public void findViews()
@@ -76,9 +85,23 @@ public class MainActivity extends AppCompatActivity  implements ContactAdaptor.I
                 }
                 else
                 {
-                    adapter.addContact(etPersonName.getText().toString().trim() , "0");
+                    if(editMode)
+                    {
+                        adapter.editContact(editingItemIndex , etPersonName.getText().toString().trim()
+                                , "0");
+                        recyclerView.scrollToPosition(editingItemIndex);
+                        editingItemIndex=-1;
+                        imgAdd.setImageResource(R.drawable.ic_pus_add_24);
+                        editMode=false;
+                    }
+                    else
+                    {
+                        adapter.addContact(etPersonName.getText().toString().trim() , "0");
+                        recyclerView.scrollToPosition(0);
+                    }
+
                     etPersonName.setText("");
-                    recyclerView.scrollToPosition(0);
+
                 }
             }
         });

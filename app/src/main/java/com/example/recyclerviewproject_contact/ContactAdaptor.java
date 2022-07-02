@@ -86,6 +86,7 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // or we could easily use getAdapterPosition() instead of tags
                     activity.onItemClicked(contacts.indexOf((Contact) itemView.getTag()));
                 }
             });
@@ -95,8 +96,14 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
 
     public void addContact(String fullName , String number)
     {
-        contacts.add(0 , new Contact(fullName , number));
+        contacts.add(0, new Contact(fullName , number));
         notifyItemInserted(0);
+    }
+    public void editContact(int index , String fullName , String number)
+    {
+        contacts.get(index).setFullName(fullName);
+        notifyItemChanged(index);
+        //************************* number
     }
 
 }
