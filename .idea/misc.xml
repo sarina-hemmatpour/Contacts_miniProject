@@ -6,12 +6,15 @@
         <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/drawable/bottom.xml" value="0.1" />
         <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.1" />
         <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/drawable/call.xml" value="0.1775" />
+        <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/drawable/circle_plus_add_background.xml" value="0.192" />
+        <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/drawable/et_background.xml" value="0.192" />
+        <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/drawable/ic_launcher_background.xml" value="0.192" />
         <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/drawable/shape_circle.xml" value="0.187" />
         <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/layout/bottom_sheet_container.xml" value="0.5479651162790697" />
         <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/layout/buttom_sheet_container.xml" value="0.300561797752809" />
         <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/layout/fragment_call.xml" value="0.25" />
-        <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/layout/item_contact.xml" value="0.22" />
+        <entry key="..\:/Users/almas/AndroidStudioProjects/RecyclerViewProject_Contact/app/src/main/res/layout/item_contact.xml" value="0.1" />
       </map>
     </option>
   </component>

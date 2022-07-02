@@ -93,4 +93,10 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ContactV
 
     }
 
+    public void addContact(String fullName , String number)
+    {
+        contacts.add(0 , new Contact(fullName , number));
+        notifyItemInserted(0);
+    }
+
 }
