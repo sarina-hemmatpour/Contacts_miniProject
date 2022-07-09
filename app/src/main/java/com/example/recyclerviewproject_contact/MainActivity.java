@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-public class MainActivity extends AppCompatActivity  implements ContactAdaptor.ItemClicked {
+public class MainActivity extends AppCompatActivity  implements ContactAdaptor.ItemClicked, DialerSheet.OnEventListener {
 
     RecyclerView recyclerView;
     ContactAdaptor adapter;
@@ -64,6 +66,12 @@ public class MainActivity extends AppCompatActivity  implements ContactAdaptor.I
 
         editingItemIndex=index;
         editMode=true;
+
+
+        //bottom sheet
+        DialerSheet dialerSheet=DialerSheet.newInstance(index);
+        dialerSheet.show(getSupportFragmentManager() , null);
+
     }
 
     @Override
@@ -112,4 +120,10 @@ public class MainActivity extends AppCompatActivity  implements ContactAdaptor.I
         });
     }
 
+    @Override
+    public void onCallClicked(int index) {
+        Intent callIntent=new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:"+ApplicationClass.contacts.get(index).getPhoneNumber()));
+        startActivity(callIntent);
+    }
 }
